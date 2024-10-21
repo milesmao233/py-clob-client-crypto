@@ -87,13 +87,13 @@ from .utilities import (
 
 class ClobClient:
     def __init__(
-        self,
-        host,
-        chain_id: int = None,
-        key: str = None,
-        creds: ApiCreds = None,
-        signature_type: int = None,
-        funder: str = None,
+            self,
+            host,
+            chain_id: int = None,
+            key: str = None,
+            creds: ApiCreds = None,
+            signature_type: int = None,
+            funder: str = None,
     ):
         """
         Initializes the clob client
@@ -306,7 +306,7 @@ class ClobClient:
         return result["neg_risk"]
 
     def __resolve_tick_size(
-        self, token_id: str, tick_size: TickSize = None
+            self, token_id: str, tick_size: TickSize = None
     ) -> TickSize:
         min_tick_size = self.get_tick_size(token_id)
         if tick_size is not None:
@@ -322,7 +322,7 @@ class ClobClient:
         return tick_size
 
     def create_order(
-        self, order_args: OrderArgs, options: Optional[PartialCreateOrderOptions] = None
+            self, order_args: OrderArgs, options: Optional[PartialCreateOrderOptions] = None
     ):
         """
         Creates and signs an order
@@ -361,9 +361,9 @@ class ClobClient:
         )
 
     def create_market_order(
-        self,
-        order_args: MarketOrderArgs,
-        options: Optional[PartialCreateOrderOptions] = None,
+            self,
+            order_args: MarketOrderArgs,
+            options: Optional[PartialCreateOrderOptions] = None,
     ):
         """
         Creates and signs an order
@@ -420,7 +420,7 @@ class ClobClient:
         return post("{}{}".format(self.host, POST_ORDER), headers=headers, proxies=proxies, data=body)
 
     def create_and_post_order(
-        self, order_args: OrderArgs, options: PartialCreateOrderOptions = None, proxies=None
+            self, order_args: OrderArgs, options: PartialCreateOrderOptions = None, proxies=None
     ):
         """
         Utility function to create and publish an order
@@ -616,7 +616,7 @@ class ClobClient:
         )
         return delete(url, headers=headers)
 
-    def get_balance_allowance(self, params: BalanceAllowanceParams = None):
+    def get_balance_allowance(self, params: BalanceAllowanceParams = None, proxies=None):
         """
         Fetches the balance & allowance for a user
         Requires Level 2 authentication
@@ -629,7 +629,7 @@ class ClobClient:
         url = add_balance_allowance_params_to_url(
             "{}{}".format(self.host, GET_BALANCE_ALLOWANCE), params
         )
-        return get(url, headers=headers)
+        return get(url, headers=headers, proxies=proxies)
 
     def update_balance_allowance(self, params: BalanceAllowanceParams = None):
         """
