@@ -35,8 +35,6 @@ def overloadHeaders(method: str, headers: dict) -> dict:
 def request(endpoint: str, method: str, headers=None, proxies=None, data=None):
     try:
         headers = overloadHeaders(method, headers)
-        print(f"Requesting {method} {endpoint} with headers: {headers} and data: {data}")
-        print(f"Proxies: {proxies}")
         resp = requests.request(
             method=method, url=endpoint, headers=headers, proxies=proxies, json=data if data else None
         )

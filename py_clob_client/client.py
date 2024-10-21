@@ -406,7 +406,7 @@ class ClobClient:
             ),
         )
 
-    def post_order(self, order, orderType: OrderType = OrderType.GTC, proxies=None):
+    def post_order(self, order, proxies=None, orderType: OrderType = OrderType.GTC):
         """
         Posts the order
         """
