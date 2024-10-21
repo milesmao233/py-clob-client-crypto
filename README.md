@@ -1,4 +1,4 @@
-## py-clob-client
+## py-clob-client-crypto
 
 <a href='https://pypi.org/project/py-clob-client'>
     <img src='https://img.shields.io/pypi/v/py-clob-client.svg' alt='PyPI'/>
@@ -8,7 +8,7 @@ Python client for the Polymarket CLOB. Full API documentation can be found [here
 
 ### Installation
 
-`pip install py-clob-client`
+`pip install py-clob-client-crypto`
 
 Intended for use with Python 3.9
 
