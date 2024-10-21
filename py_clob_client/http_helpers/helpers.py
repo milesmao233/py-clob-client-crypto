@@ -50,16 +50,16 @@ def request(endpoint: str, method: str, headers=None, proxies=None, data=None):
         raise PolyApiException(error_msg="Request exception!")
 
 
-def post(endpoint, headers=None, data=None):
-    return request(endpoint, POST, headers, data)
+def post(endpoint, headers=None, proxies=None, data=None):
+    return request(endpoint, POST, headers, proxies, data)
 
 
-def get(endpoint, headers=None, data=None):
-    return request(endpoint, GET, headers, data)
+def get(endpoint, headers=None, proxies=None, data=None):
+    return request(endpoint, GET, headers, proxies, data)
 
 
-def delete(endpoint, headers=None, data=None):
-    return request(endpoint, DELETE, headers, data)
+def delete(endpoint, headers=None, proxies=None, data=None):
+    return request(endpoint, DELETE, headers, proxies, data)
 
 
 def build_query_params(url: str, param: str, val: str) -> str:
