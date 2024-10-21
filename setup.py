@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="py_clob_client",
+    name="py_clob_client_crypto",
     version="0.18.0",
     author="Polymarket Engineering",
     author_email="engineering@polymarket.com",
@@ -13,7 +13,7 @@ setuptools.setup(
     description="Python client for the Polymarket CLOB",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Polymarket/py-clob-client",
+    url="https://github.com/milesmao233/py-clob-client-crypto",
     install_requires=[
         "eth-account>=0.13.0",
         "eth-utils>=4.1.1",
