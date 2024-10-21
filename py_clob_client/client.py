@@ -261,11 +261,11 @@ class ClobClient:
         body = [{"token_id": param.token_id} for param in params]
         return post("{}{}".format(self.host, MID_POINTS), data=body)
 
-    def get_price(self, token_id, side):
+    def get_price(self, token_id, side, proxies=None):
         """
         Get the market price for the given market
         """
-        return get("{}{}?token_id={}&side={}".format(self.host, PRICE, token_id, side))
+        return get("{}{}?token_id={}&side={}".format(self.host, PRICE, token_id, side), proxies=proxies)
 
     def get_prices(self, params: list[BookParams]):
         """
@@ -428,7 +428,7 @@ class ClobClient:
         ord = self.create_order(order_args, options)
         return self.post_order(ord, proxies)
 
-    def cancel(self, order_id):
+    def cancel(self, order_id, proxies=None):
         """
         Cancels an order
         Level 2 Auth required
@@ -438,7 +438,7 @@ class ClobClient:
 
         request_args = RequestArgs(method="DELETE", request_path=CANCEL, body=body)
         headers = create_level_2_headers(self.signer, self.creds, request_args)
-        return delete("{}{}".format(self.host, CANCEL), headers=headers, data=body)
+        return delete("{}{}".format(self.host, CANCEL), headers=headers, data=body, proxies=proxies)
 
     def cancel_orders(self, order_ids):
         """
@@ -482,7 +482,7 @@ class ClobClient:
             "{}{}".format(self.host, CANCEL_MARKET_ORDERS), headers=headers, data=body
         )
 
-    def get_orders(self, params: OpenOrderParams = None, next_cursor="MA=="):
+    def get_orders(self, params: OpenOrderParams = None, next_cursor="MA==", proxies=None):
         """
         Gets orders for the API key
         Requires Level 2 authentication
@@ -497,7 +497,7 @@ class ClobClient:
             url = add_query_open_orders_params(
                 "{}{}".format(self.host, ORDERS), params, next_cursor
             )
-            response = get(url, headers=headers)
+            response = get(url, headers=headers, proxies=proxies)
             next_cursor = response["next_cursor"]
             results += response["data"]
 
